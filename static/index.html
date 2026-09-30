@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoPulse | Smart Waste Management & Citizen Action System</title>
+  <meta name="description" content="A modern centralized waste management platform empowering citizens to report overflowing bins, schedule bulk pickups, track resolution timelines, and access segregation guides.">
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Tiranga Tricolor Accent Strip -->
+  <div class="tiranga-accent-bar"></div>
+
+  <!-- Header & Navigation Bar -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-group" id="btn-brand-home">
+        <div class="brand-icon" style="background: linear-gradient(135deg, #f97316, #10b981);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+            <circle cx="12" cy="12" r="5"></circle>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">EcoTrack &bull; Swachh<span class="highlight" style="color: #f97316;">Pulse</span> <span style="font-size: 0.95rem; font-weight: 500; color: #a7f3d0;">स्वच्छ नगर</span></span>
+          <span class="brand-subtitle">🙏 नमस्ते &bull; Swachh Nagar, Swasth Nagar &bull; Smart Waste Management</span>
+        </div>
+      </div>
+
+      <!-- Main Navigation Menu -->
+      <nav class="nav-links" id="main-nav">
+        <button class="nav-btn active" data-tab="tab-overview" id="nav-tab-overview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Overview</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-academy" id="nav-tab-academy">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <span>🎓 Swachh Academy</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-report" id="nav-tab-report">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span>Report Issue</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-pickup" id="nav-tab-pickup">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          <span>Bulk & Malba Pickup</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-tracking" id="nav-tab-tracking">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Track Status</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-admin" id="nav-tab-admin" style="display: none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <span>Admin Portal</span>
+        </button>
+        <button class="nav-btn" data-tab="tab-awareness" id="nav-tab-awareness">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+          <span>Segregation & Tips</span>
+        </button>
+      </nav>
+
+      <!-- User Account Action Area -->
+      <div class="user-action-area">
+        <div id="auth-guest-controls" class="guest-controls">
+          <button class="btn btn-secondary-sm" id="btn-quick-demo-admin" title="Instantly log in as city administrator">
+            ⚡ Demo Admin
+          </button>
+          <button class="btn btn-primary-sm" id="btn-open-login">
+            Sign In / Register
+          </button>
+        </div>
+
+        <div id="auth-user-profile" class="user-profile-widget" style="display: none;">
+          <span class="streak-fire-pill" id="user-streak-badge">🔥 14d Streak</span>
+          <span class="karma-pill" id="user-karma-badge">🌟 340 Karma</span>
+          <div class="user-badge" id="user-badge-role">Citizen</div>
+          <div class="user-info-text">
+            <span class="user-name" id="user-display-name">Aarav Sharma</span>
+            <span class="user-email" id="user-display-email">citizen@cleanwaste.org</span>
+          </div>
+          <button class="btn-icon" id="btn-logout" title="Log Out">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Banner -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Main Content Body -->
+  <main class="main-content">
+    
+    <!-- 1. OVERVIEW & HERO SECTION -->
+    <section id="tab-overview" class="tab-pane active">
+      <div class="hero-card">
+        <div class="hero-content">
+          <div style="display: flex; gap: 0.6rem; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap;">
+            <div class="tag-pill" style="background: rgba(249, 115, 22, 0.15); color: #fb923c; border-color: rgba(249, 115, 22, 0.3);">
+              🇮🇳 Swachh Survekshan & Municipal Action
+            </div>
+            <div class="tag-pill" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);">
+              <span class="pulse-dot"></span> Live IST &bull; Nagar Nigam Waste Network
+            </div>
+            <div class="see-snap-clean-banner">
+              ⚡ देखो &bull; फ़ोटो लो &bull; शाम तक साफ़
+            </div>
+            <div class="swachh-motto-pill">
+              एक कदम स्वच्छता की ओर &bull; Clean India Mission
+            </div>
+          </div>
+          <h1>Nagar Nigam Smart Waste & Civic Intelligence Platform</h1>
+          <p>
+            Empowering citizens across municipal wards to report overflowing dustbins, schedule doorstep bulk & malba pickups, 
+            learn sacred waste upcycling with AI, and track transparent resolution timelines.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-accent btn-lg" onclick="switchTab('tab-report')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              Report Ward Garbage
+            </button>
+            <button class="btn btn-primary btn-lg" onclick="switchTab('tab-academy')">
+              🎓 AI Swachhata Academy
+            </button>
+            <button class="btn btn-outline btn-lg" onclick="switchTab('tab-pickup')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              Malba & Bulk Pickup
+            </button>
+          </div>
+        </div>
+        <div class="hero-metrics-pill">
+          <div class="metric-item">
+            <span class="metric-val" id="hero-total-complaints">--</span>
+            <span class="metric-lbl">Ward Issues Logged</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-val text-success" id="hero-resolved-rate">--%</span>
+            <span class="metric-lbl">Ward Clean Rate</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-val text-accent" id="hero-active-pickups">--</span>
+            <span class="metric-lbl">Bulk Dispatches</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GitHub Style Citizen Contribution Heatmap Card -->
+      <div class="github-heatmap-card">
+        <div class="heatmap-header">
+          <div class="heatmap-title-wrap">
+            <svg class="github-octo-icon" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+            </svg>
+            <div>
+              <h3>Citizen Swachhata Contributions (GitHub Activity Heatmap)</h3>
+              <p>112 days of waste segregation, verified reporting, and community sanitation actions</p>
+            </div>
+          </div>
+          <div class="heatmap-stats-row">
+            <span class="gh-tag-issue">main-branch</span>
+            <span class="streak-fire-pill" id="heatmap-streak">🔥 14-Day Streak</span>
+            <span class="karma-pill" id="heatmap-karma">🌟 340 Karma</span>
+          </div>
+        </div>
+        <div class="heatmap-container-box">
+          <div id="heatmap-grid" class="heatmap-grid">
+            <!-- Injected dynamically via JS -->
+          </div>
+          <div class="heatmap-footer">
+            <span>Verified citizen sanitation activity &bull; Level 0 (inactive) to Level 4 (exemplary)</span>
+            <div class="heatmap-legend">
+              <span>Less</span>
+              <div class="legend-box" style="background: #21262d;"></div>
+              <div class="legend-box" style="background: #0e4429;"></div>
+              <div class="legend-box" style="background: #006d32;"></div>
+              <div class="legend-box" style="background: #26a641;"></div>
+              <div class="legend-box" style="background: #39d353;"></div>
+              <span>More</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Highlight Grid (EcoTrack 6 Tools) -->
+      <div style="margin-top: 2rem;">
+        <div style="margin-bottom: 1rem;">
+          <span class="tag-pill" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3);">
+            🛠️ EcoTrack Civic Suite
+          </span>
+          <h2 style="font-size: 1.4rem; font-weight: 800; color: #fff; margin-top: 0.35rem;">Six tools, one mission: zero overflowing bins.</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card" onclick="switchTab('tab-report')">
+            <div class="card-icon-box bg-red-soft">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3>Report with photo + GPS</h3>
+            <p>Pin the exact spot, attach a picture, specify nearest landmark & urgency. Done in 30 seconds.</p>
+            <span class="card-link">Report Issue &rarr;</span>
+          </div>
+
+          <div class="feature-card" onclick="switchTab('tab-pickup')">
+            <div class="card-icon-box bg-emerald-soft">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            </div>
+            <h3>Doorstep Pickups</h3>
+            <p>E-waste, bulky furniture, garden waste, and the big clear-out before Diwali — pick a slot.</p>
+            <span class="card-link">Schedule Pickup &rarr;</span>
+          </div>
+
+          <div class="feature-card" onclick="switchTab('tab-tracking')">
+            <div class="card-icon-box bg-blue-soft">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3>Live Complaint Tracking</h3>
+            <p>Follow every step from submitted to resolved, upvote issues, and slide to inspect Before/After proof.</p>
+            <span class="card-link">Track Reports &rarr;</span>
+          </div>
+
+          <div class="feature-card" onclick="switchTab('tab-awareness')">
+            <div class="card-icon-box" style="background: rgba(139, 92, 246, 0.15);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3>Which Bin? Search 50+ Items</h3>
+            <p>Type any household or festive item to get the right colored bin stream and AI vision scanning instantly.</p>
+            <span class="card-link" style="color: #a78bfa;">Check Items &rarr;</span>
+          </div>
+
+          <div class="feature-card" onclick="switchTab('tab-academy')">
+            <div class="card-icon-box" style="background: rgba(249, 115, 22, 0.15);">
+              <span style="font-size: 1.5rem;">🎓</span>
+            </div>
+            <h3>AI Swachhata Academy & Quiz</h3>
+            <p>5 cultural modules on Nirmalya upcycling, milk pouch rule, and home composting. Earn your official certificate!</p>
+            <span class="card-link" style="color: #fb923c;">Get Certified &rarr;</span>
+          </div>
+
+          <div class="feature-card" onclick="switchTab('tab-admin')">
+            <div class="card-icon-box" style="background: rgba(234, 179, 8, 0.15);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            </div>
+            <h3>Municipal Control Room</h3>
+            <p>Dispatch crews, map recurring waste hotspots, and optimize sanitation vehicle fleet routes.</p>
+            <span class="card-link" style="color: #eab308;">Control Room &rarr;</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-Step Workflow: Happening In Your City (EcoTrack Signature) -->
+      <div class="city-workflow-card">
+        <div class="city-workflow-header">
+          <span class="tag-pill" style="background: rgba(249, 115, 22, 0.15); color: #fb923c; border-color: rgba(249, 115, 22, 0.3);">
+            स्मार्ट नगर &bull; 5-Step Civic Pipeline
+          </span>
+          <h3>Happening In Your City: From Snap to Clean</h3>
+          <p>Real-time lifecycle of every reported waste issue across municipal wards.</p>
+        </div>
+        <div class="workflow-steps-grid">
+          <div class="workflow-step-box">
+            <span class="step-num-pill">01</span>
+            <h4>Submitted</h4>
+            <p>You snap the issue with GPS pin &amp; landmark.</p>
+          </div>
+          <div class="workflow-step-box">
+            <span class="step-num-pill">02</span>
+            <h4>Assigned</h4>
+            <p>Ward supervisor verifies &amp; picks Safai Mitra crew.</p>
+          </div>
+          <div class="workflow-step-box">
+            <span class="step-num-pill">03</span>
+            <h4>Dispatched</h4>
+            <p>Sanitation tipper truck is en route to location.</p>
+          </div>
+          <div class="workflow-step-box">
+            <span class="step-num-pill">04</span>
+            <h4>In Progress</h4>
+            <p>Crew on site, clearing heap &amp; sanitising area.</p>
+          </div>
+          <div class="workflow-step-box">
+            <span class="step-num-pill">05</span>
+            <h4>Resolved</h4>
+            <p>Before/After photo proof uploaded &amp; citizen notified.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ward Cleanliness Scores Leaderboard Card (EcoTrack Inspired) -->
+      <div class="ward-leaderboard-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div class="tag-pill" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); margin-bottom: 0.4rem;">
+              🏛️ वार्ड स्वच्छता विश्लेषण &bull; Ward Performance Index
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff;">Ward Cleanliness Scores & Survekshan Star Ratings</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem;">Real-time audit performance, average clearance velocity, and active Safai Mitra crews across zones.</p>
+          </div>
+          <span class="badge badge-resolved">Live Survekshan Audit</span>
+        </div>
+        <div class="table-responsive" style="margin-top: 1rem;">
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Ward Name & Zone</th>
+                <th>Cleanliness Score</th>
+                <th>Survekshan Rating</th>
+                <th>Active Crews</th>
+                <th>Avg Resolution</th>
+              </tr>
+            </thead>
+            <tbody id="ward-leaderboard-tbody">
+              <!-- Rendered via JS from /api/wards/leaderboard -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW SECTION: SWACHHATA ACADEMY (AI WASTE EDUCATION & CERTIFICATION) -->
+    <section id="tab-academy" class="tab-pane">
+      <div class="academy-hero-banner">
+        <div style="display: flex; gap: 0.6rem; align-items: center; margin-bottom: 0.75rem;">
+          <span class="badge" style="background: rgba(249, 115, 22, 0.2); color: #fb923c; border-color: rgba(249, 115, 22, 0.4);">
+            🇮🇳 AI Swachhata Pathshala
+          </span>
+          <span class="swachh-motto-pill">स्वच्छता ही सेवा</span>
+        </div>
+        <h2>AI Swachhata Academy & Waste Literacy Portal</h2>
+        <p>
+          Master source segregation tailored to Indian households and sacred traditions. Complete 5 interactive micro-lessons, 
+          take the AI knowledge challenge, and earn your official <strong>Swachh Bharat Citizen Certificate</strong>!
+        </p>
+      </div>
+
+      <div class="page-header" style="margin-top: 1.5rem;">
+        <div>
+          <h3>📚 Core Swachhata Learning Modules</h3>
+          <p>Click any lesson card below to read illustrated instructions and expert municipal tips.</p>
+        </div>
+      </div>
+
+      <!-- Lessons Grid (5 Cultural Micro-Lessons) -->
+      <div id="academy-lessons-grid" class="lessons-grid">
+        <div class="lesson-card" onclick="openLessonModal('lesson-1')">
+          <div class="lesson-top-meta">
+            <span class="lesson-num-badge">MODULE 01</span>
+            <span class="lesson-read-time">🕒 3 min read &bull; Foundation</span>
+          </div>
+          <div style="font-size: 1.5rem; margin-top: 0.25rem;">🌱</div>
+          <h3>The 2-Bin Revolution: Geela vs Sookha Kachra</h3>
+          <div class="lesson-hindi-title">हरा कूड़ादान बनाम नीला कूड़ादान - स्रोत पर पृथक्करण</div>
+          <p class="lesson-summary">Why mixing kitchen wet waste with dry recyclables creates toxic landfill fires at Ghazipur and Deonar.</p>
+          <button type="button" class="lesson-action-btn">
+            Read Illustrated Module &rarr;
+          </button>
+        </div>
+
+        <div class="lesson-card" onclick="openLessonModal('lesson-2')">
+          <div class="lesson-top-meta">
+            <span class="lesson-num-badge">MODULE 02</span>
+            <span class="lesson-read-time">🕒 3 min read &bull; Culture & Faith</span>
+          </div>
+          <div style="font-size: 1.5rem; margin-top: 0.25rem;">🌸</div>
+          <h3>Nirmalya & Temple Floral Waste Upcycling</h3>
+          <div class="lesson-hindi-title">पवित्र निर्माल्य: फूलों से बनेगी अगरबत्ती व जैविक खाद</div>
+          <p class="lesson-summary">Transforming sacred puja flowers into natural organic incense and compost instead of suffocating holy rivers.</p>
+          <button type="button" class="lesson-action-btn">
+            Read Illustrated Module &rarr;
+          </button>
+        </div>
+
+        <div class="lesson-card" onclick="openLessonModal('lesson-3')">
+          <div class="lesson-top-meta">
+            <span class="lesson-num-badge">MODULE 03</span>
+            <span class="lesson-read-time">🕒 2 min read &bull; Daily Habits</span>
+          </div>
+          <div style="font-size: 1.5rem; margin-top: 0.25rem;">🥛</div>
+          <h3>The 100-Crore Milk Pouch Habit & Single-Use Plastic</h3>
+          <div class="lesson-hindi-title">दूध की थैली का कोना पूरा न काटें: एक छोटी आदत, बड़ा बदलाव</div>
+          <p class="lesson-summary">How snipping milk pouches without detaching the tiny plastic corner avoids microplastic choking in cows & marine life.</p>
+          <button type="button" class="lesson-action-btn">
+            Read Illustrated Module &rarr;
+          </button>
+        </div>
+
+        <div class="lesson-card" onclick="openLessonModal('lesson-4')">
+          <div class="lesson-top-meta">
+            <span class="lesson-num-badge">MODULE 04</span>
+            <span class="lesson-read-time">🕒 4 min read &bull; Home Green</span>
+          </div>
+          <div style="font-size: 1.5rem; margin-top: 0.25rem;">🪴</div>
+          <h3>Odorless Terrace & Balcony Composting (घर की खाद)</h3>
+          <div class="lesson-hindi-title">बालकनी में बदबू-रहित खाद बनाना सीखें</div>
+          <p class="lesson-summary">Converting everyday dal, roti, and vegetable peels into nutrient-rich 'Black Gold' for Indian apartments.</p>
+          <button type="button" class="lesson-action-btn">
+            Read Illustrated Module &rarr;
+          </button>
+        </div>
+
+        <div class="lesson-card" onclick="openLessonModal('lesson-5')">
+          <div class="lesson-top-meta">
+            <span class="lesson-num-badge">MODULE 05</span>
+            <span class="lesson-read-time">🕒 3 min read &bull; Human Dignity</span>
+          </div>
+          <div style="font-size: 1.5rem; margin-top: 0.25rem;">❤️</div>
+          <h3>Dignity of Safai Mitras & The Red Cross Rule</h3>
+          <div class="lesson-hindi-title">सफाई मित्रों का सम्मान: सेनेटरी कचरे पर लाल बिंदी का नियम</div>
+          <p class="lesson-summary">Protecting sanitation workers from biological infection through responsible newspaper wrapping and red-dot marking.</p>
+          <button type="button" class="lesson-action-btn">
+            Read Illustrated Module &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Interactive Quiz Section -->
+      <div class="quiz-container-box" id="quiz-container">
+        <div class="quiz-header-bar">
+          <div>
+            <h3>📝 Test Your Swachhata Knowledge & Get Certified</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.25rem;">
+              Score 75% or higher on this 4-question AI quiz to generate your verified Swachh Bharat Citizen Certificate.
+            </p>
+          </div>
+          <span class="badge badge-assigned" id="quiz-status-badge">4 Questions Ready</span>
+        </div>
+
+        <form id="form-swachh-quiz">
+          <!-- Question 1 -->
+          <div class="quiz-q-block">
+            <div class="quiz-q-title">Q1: Where should used tea leaves (Chai Patti) and vegetable peels be disposed of?</div>
+            <div class="quiz-options-grid">
+              <button type="button" class="quiz-opt-btn" data-qid="1" data-opt="0">A) Blue Bin (Dry Waste)</button>
+              <button type="button" class="quiz-opt-btn" data-qid="1" data-opt="1">B) Green Bin (Wet Waste / Composting)</button>
+              <button type="button" class="quiz-opt-btn" data-qid="1" data-opt="2">C) Red Bin (Sanitary Waste)</button>
+              <button type="button" class="quiz-opt-btn" data-qid="1" data-opt="3">D) Throw onto roadside open curb</button>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="quiz-q-block">
+            <div class="quiz-q-title">Q2: What is the correct way to open and dispose of plastic milk pouches?</div>
+            <div class="quiz-options-grid">
+              <button type="button" class="quiz-opt-btn" data-qid="2" data-opt="0">A) Snip off the small corner completely into the trash</button>
+              <button type="button" class="quiz-opt-btn" data-qid="2" data-opt="1">B) Leave corner attached to pouch, rinse, dry & place in Blue Bin</button>
+              <button type="button" class="quiz-opt-btn" data-qid="2" data-opt="2">C) Throw unwashed pouch into Green Bin with wet waste</button>
+              <button type="button" class="quiz-opt-btn" data-qid="2" data-opt="3">D) Burn it on the street</button>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="quiz-q-block">
+            <div class="quiz-q-title">Q3: How should domestic sanitary napkins and diapers be handed over to Safai Mitras?</div>
+            <div class="quiz-options-grid">
+              <button type="button" class="quiz-opt-btn" data-qid="3" data-opt="0">A) In an unmarked black plastic polythene</button>
+              <button type="button" class="quiz-opt-btn" data-qid="3" data-opt="1">B) Wrapped in newspaper with a prominent RED DOT / RED CROSS</button>
+              <button type="button" class="quiz-opt-btn" data-qid="3" data-opt="2">C) Flushed down the domestic toilet</button>
+              <button type="button" class="quiz-opt-btn" data-qid="3" data-opt="3">D) Mixed with kitchen food leftovers</button>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="quiz-q-block">
+            <div class="quiz-q-title">Q4: What should be done with devotional puja flowers & garlands (Nirmalya)?</div>
+            <div class="quiz-options-grid">
+              <button type="button" class="quiz-opt-btn" data-qid="4" data-opt="0">A) Dump in polythene bags into nearest river</button>
+              <button type="button" class="quiz-opt-btn" data-qid="4" data-opt="1">B) Burn with plastic leaves</button>
+              <button type="button" class="quiz-opt-btn" data-qid="4" data-opt="2">C) Compost for home plants or give to temple incense drives</button>
+              <button type="button" class="quiz-opt-btn" data-qid="4" data-opt="3">D) Throw on empty plot</button>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+            <button type="submit" class="btn btn-primary" id="btn-submit-quiz">
+              Submit Answers & Evaluate &rarr;
+            </button>
+          </div>
+        </form>
+
+        <!-- Dynamic Certificate Render Area -->
+        <div id="certificate-output-area" style="display: none;">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. REPORT WASTE ISSUE (Citizen Form) -->
+    <section id="tab-report" class="tab-pane">
+      <div class="page-header">
+        <div>
+          <h2>Report a Waste Issue</h2>
+          <p>Submit details with photo and location to dispatch the nearest sanitation vehicle.</p>
+        </div>
+      </div>
+
+      <div class="form-layout-wrapper">
+        <form id="form-report-complaint" class="glass-form">
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="report-title">Issue Title *</label>
+              <input type="text" id="report-title" required placeholder="e.g. Overflowing garbage bin blocking sidewalk" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="report-category">Waste Category *</label>
+              <select id="report-category" required class="form-input select-styled">
+                <option value="Overflowing Bins">🗑️ Overflowing Bins</option>
+                <option value="Garbage on Roads">🛣️ Garbage on Roads</option>
+                <option value="Missed Collection">🚛 Missed Collection</option>
+                <option value="Illegal Dumping">⚠️ Illegal Dumping</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="report-location">Location / Landmark *</label>
+              <div class="input-with-button">
+                <input type="text" id="report-location" required placeholder="e.g., Near Metro Pillar 124, 4th Cross" class="form-input">
+                <button type="button" class="btn btn-secondary-sm" id="btn-detect-location" title="Detect GPS coordinates">
+                  📍 Detect GPS
+                </button>
+              </div>
+              <div class="landmark-helper-chips">
+                <span style="font-size: 0.72rem; color: var(--text-muted);">Quick Landmarks:</span>
+                <button type="button" class="btn-landmark-chip" data-prefix="Near Metro Pillar #">🚇 Metro Pillar</button>
+                <button type="button" class="btn-landmark-chip" data-prefix="Opp. Mandir Gate, ">🛕 Mandir Gate</button>
+                <button type="button" class="btn-landmark-chip" data-prefix="Near Chai Tapri, ">☕ Chai Stall</button>
+                <button type="button" class="btn-landmark-chip" data-prefix="Behind School Gate, ">🏫 School</button>
+                <button type="button" class="btn-landmark-chip" data-prefix="Opp. Bus Stop, ">🚌 Bus Stop</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row coords-preview" id="coords-row" style="display: none;">
+            <div class="coords-info">
+              <span>Detected Coordinates:</span>
+              <code id="coords-display">Lat: 0.00, Lng: 0.00</code>
+            </div>
+          </div>
+
+          <!-- EcoAI Auto-Classify & Form Enhancement Widget -->
+          <div class="ai-assist-box">
+            <div class="ai-assist-header">
+              <div class="ai-assist-title">
+                <span class="sparkle-icon">✨</span>
+                <div>
+                  <strong>EcoAI Smart Classifier:</strong> Type any casual observation below, then click auto-classify to determine category, severity, and generate a standardized civic dispatch description.
+                </div>
+              </div>
+              <button type="button" class="btn btn-ai-sm" id="btn-ai-classify-report">
+                ✨ AI Auto-Classify
+              </button>
+            </div>
+            <div id="ai-classify-badge" class="ai-result-badge" style="display: none;"></div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="report-description">Detailed Description *</label>
+              <textarea id="report-description" rows="4" required placeholder="Describe the severity, duration of uncollected waste, and any safety hazards..." class="form-input"></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="report-image-url">Image URL (Optional placeholder or upload link)</label>
+              <input type="url" id="report-image-url" placeholder="https://images.unsplash.com/... or paste image URL" class="form-input">
+              <span class="field-hint">Tip: Leave blank to use our default incident preview photograph.</span>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="reset" class="btn btn-secondary">Clear Form</button>
+            <button type="submit" class="btn btn-primary" id="btn-submit-complaint">
+              Submit Waste Report &rarr;
+            </button>
+          </div>
+        </form>
+
+        <!-- Informational Sidebar with SLA Targets -->
+        <aside class="side-info-card">
+          <h4>⏱️ Municipal Response SLA Targets</h4>
+          <div class="sla-targets-box">
+            <div class="sla-target-item critical">
+              <span class="sla-badge">Critical</span>
+              <strong>Within 4 Hours</strong>
+              <small>Hazardous spills, bio-waste, road blockage</small>
+            </div>
+            <div class="sla-target-item high">
+              <span class="sla-badge">High</span>
+              <strong>Within 12 Hours</strong>
+              <small>Overflowing community dustbins, dead animals</small>
+            </div>
+            <div class="sla-target-item normal">
+              <span class="sla-badge">Normal</span>
+              <strong>Within 48 Hours</strong>
+              <small>Dry malba rubble, street sweeping litter</small>
+            </div>
+          </div>
+          <h4>💡 Quality Reports Get Cleared Faster</h4>
+          <ul class="info-list">
+            <li><strong>Specific Landmark:</strong> Name a mandir, chai stall, school or metro pillar number.</li>
+            <li><strong>Wide-Angle Photo:</strong> Photograph the full pile, not just a close-up, for vehicle sizing.</li>
+            <li><strong>Mention Hazards:</strong> Explicitly note broken glass, chemicals, or open fire.</li>
+          </ul>
+          <div class="helpline-box">
+            <span>Direct Sanitation Control Room:</span>
+            <strong>1800-SAN-CLEAN (Toll-Free)</strong>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 3. WASTE PICKUP REQUEST (Bulk/Special Scheduling) -->
+    <section id="tab-pickup" class="tab-pane">
+      <div class="page-header">
+        <div>
+          <h2>Schedule Special / Bulk Waste Pickup</h2>
+          <p>For societies, institutions, and households needing dedicated bulk disposal.</p>
+        </div>
+      </div>
+
+      <div class="form-layout-wrapper">
+        <form id="form-pickup-request" class="glass-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pickup-request-type">Pickup Category</label>
+              <select id="pickup-request-type" class="form-input select-styled">
+                <option value="Residential Bulk Pickup">Residential Bulk Furniture & Household</option>
+                <option value="Festive Clear-out">🪔 दीवाली / त्योहार सफाई (Pre-Festival Mega Clear-out)</option>
+                <option value="Gated Society Collective Pickup">Gated Society Collective Waste</option>
+                <option value="Commercial / Renovation Debris">Commercial / Renovation Dry Debris (मलबा)</option>
+                <option value="Institutional E-Waste Drive">Institutional E-Waste Drive</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pickup-waste-type">Type of Waste Material *</label>
+              <input type="text" id="pickup-waste-type" required placeholder="e.g. Wooden furniture, mattress, cartons" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pickup-volume">Estimated Volume *</label>
+              <select id="pickup-volume" required class="form-input select-styled">
+                <option value="Small (~1-2 Large Cartons / 50 kg)">Small (~1-2 Large Cartons / 50 kg)</option>
+                <option value="Medium (~Half Truck Bed / 150 kg)">Medium (~Half Truck Bed / 150 kg)</option>
+                <option value="Large (Full Mini-Truck / 300+ kg)">Large (Full Mini-Truck / 300+ kg)</option>
+                <option value="Bulk Heavy Commercial (500+ kg)">Bulk Heavy Commercial (500+ kg)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pickup-date">Preferred Pickup Date *</label>
+              <input type="date" id="pickup-date" required class="form-input">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pickup-address">Pickup Address *</label>
+              <input type="text" id="pickup-address" required placeholder="Society name, building number, street..." class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="pickup-contact">Contact Phone Number *</label>
+              <input type="tel" id="pickup-contact" required placeholder="+1-555-0199" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="pickup-instructions">Access Notes or Special Instructions</label>
+              <textarea id="pickup-instructions" rows="3" placeholder="e.g. Security gate pass code, basement service elevator availability..." class="form-input"></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="btn-submit-pickup">
+              Confirm & Schedule Pickup &rarr;
+            </button>
+          </div>
+        </form>
+
+        <aside class="side-info-card">
+          <h4>🚛 What Qualifies for Bulk Pickup?</h4>
+          <div class="checklist">
+            <div class="check-item">✅ Old mattresses, sofas, tables, wooden cabinets</div>
+            <div class="check-item">✅ Large appliances: Refrigerators, washing machines, TVs</div>
+            <div class="check-item">✅ Pruned branches and dense landscaping refuse</div>
+            <div class="check-item">❌ Wet decomposing kitchen organic waste</div>
+            <div class="check-item">❌ Uncontained asbestos or hazardous industrial liquids</div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- User's scheduled pickups list -->
+      <div class="section-divider">
+        <h3>Your Scheduled Bulk Pickups</h3>
+      </div>
+      <div id="user-pickups-container" class="pickups-grid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- 4. COMPLAINT TRACKING & TIMELINE -->
+    <section id="tab-tracking" class="tab-pane">
+      <div class="page-header">
+        <div>
+          <h2>Live Complaint Tracking</h2>
+          <p>Real-time status updates and milestone timeline for your reported civic issues.</p>
+        </div>
+        <div class="filter-group">
+          <label for="tracking-filter-status">Filter by Status:</label>
+          <select id="tracking-filter-status" class="form-input-sm select-styled">
+            <option value="ALL">All Reports</option>
+            <option value="Pending">Pending</option>
+            <option value="Assigned">Assigned</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="complaints-list-container" class="complaints-list">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- 5. ADMIN DASHBOARD & HOTSPOTS -->
+    <section id="tab-admin" class="tab-pane">
+      <div class="page-header">
+        <div>
+          <h2>Sanitation Operations & Analytics Portal</h2>
+          <p>Real-time civic intelligence, dispatch management, and waste density hotspot detection.</p>
+        </div>
+        <div class="admin-top-actions">
+          <span class="badge badge-admin">Administrator Access Active</span>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-label">Total Reports</span>
+          <div class="kpi-value-row">
+            <span class="kpi-number" id="kpi-total">0</span>
+            <span class="kpi-badge bg-blue-subtle">Cumulative</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <span class="kpi-label">Pending Dispatch</span>
+          <div class="kpi-value-row">
+            <span class="kpi-number text-amber" id="kpi-pending">0</span>
+            <span class="kpi-badge bg-amber-subtle">Action Required</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <span class="kpi-label">Active / In Progress</span>
+          <div class="kpi-value-row">
+            <span class="kpi-number text-indigo" id="kpi-in-progress">0</span>
+            <span class="kpi-badge bg-indigo-subtle">Crews Assigned</span>
+          </div>
+        </div>
+
+        <div class="kpi-card">
+          <span class="kpi-label">Resolved & Cleaned</span>
+          <div class="kpi-value-row">
+            <span class="kpi-number text-success" id="kpi-resolved">0</span>
+            <span class="kpi-badge bg-emerald-subtle" id="kpi-rate">0% Rate</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Waste Hotspots & Category Distribution -->
+      <div class="dashboard-duo-grid">
+        <!-- Hotspots Box -->
+        <div class="analytics-card">
+          <div class="card-title-bar">
+            <div>
+              <h3>🔥 Waste Hotspots by Location Frequency</h3>
+              <p>Top neighborhoods and corridors generating recurring sanitation complaints.</p>
+            </div>
+          </div>
+          <div id="hotspots-list" class="hotspots-list">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Issue Categories Distribution -->
+        <div class="analytics-card">
+          <div class="card-title-bar">
+            <div>
+              <h3>📊 Waste Type Breakdown</h3>
+              <p>Volume proportion of reported civic sanitation categories.</p>
+            </div>
+          </div>
+          <div id="category-distribution-container" class="category-bars">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Complaint Management Table -->
+      <div class="table-container">
+        <div class="table-header-bar">
+          <h3>Manage Active Complaints & Status Transitions</h3>
+          <div class="table-filters">
+            <select id="admin-status-filter" class="form-input-sm select-styled">
+              <option value="">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="Assigned">Assigned</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Citizen</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Assigned Crew</th>
+                <th>Admin Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-complaints-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- EcoAI Fleet & Route Optimizer -->
+      <div class="ai-route-card">
+        <div class="ai-route-header">
+          <div class="ai-route-title">
+            <span class="sparkle-icon">🤖</span>
+            <div>
+              <h3>EcoAI Sanitation Fleet & Dispatch Route Optimizer</h3>
+              <p>Predictive clustering engine sequencing pending complaints to minimize transit latency and fuel burn.</p>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary-sm" id="btn-refresh-ai-route">
+            ⚡ Recalculate Route
+          </button>
+        </div>
+        <div id="ai-route-content" class="ai-route-body">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. WASTE AWARENESS & SEGREGATION SECTION -->
+    <section id="tab-awareness" class="tab-pane">
+      <div class="page-header">
+        <div>
+          <h2>EcoSegregation & Waste Literacy Guide</h2>
+          <p>Master source segregation: protect groundwater, recover recyclables, and minimize landfill footprint.</p>
+        </div>
+      </div>
+
+      <!-- Quick Item Search Feature -->
+      <div class="search-disposal-box">
+        <div class="search-input-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="waste-item-search" placeholder="Type any item to check its correct bin (e.g. 'pizza box', 'banana peel', 'battery', 'newspaper', 'shampoo bottle')...">
+        </div>
+        <div id="quick-search-result" class="search-result-pill" style="display: none;"></div>
+      </div>
+
+      <!-- EcoAI Vision Waste Scanner -->
+      <div class="ai-scanner-card">
+        <div class="ai-scanner-header">
+          <div class="scanner-badge">🔬 EcoAI Vision Intelligence</div>
+          <h3>Interactive AI Waste Material Scanner</h3>
+          <p>Test the neural waste segregation engine. Inspect any waste sample to classify its disposal stream, recyclability index, and carbon mitigation impact.</p>
+        </div>
+
+        <div class="scanner-interface">
+          <div class="scanner-presets-row">
+            <span>Select Test Waste Sample:</span>
+            <div class="preset-buttons">
+              <button type="button" class="btn-preset active" data-sample="plastic_bottle">🥤 PET Plastic Bottle</button>
+              <button type="button" class="btn-preset" data-sample="food_scraps">🍎 Organic Kitchen Scraps</button>
+              <button type="button" class="btn-preset" data-sample="battery">🔋 Lithium-Ion Battery</button>
+              <button type="button" class="btn-preset" data-sample="pizza_box">🍕 Greasy Pizza Box</button>
+            </div>
+          </div>
+
+          <div id="scanner-result-box" class="scanner-result-display">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Core Stream Cards -->
+      <div id="awareness-cards-grid" class="awareness-grid">
+        <!-- Rendered dynamically from backend /api/awareness -->
+      </div>
+
+      <!-- HARIT TYOHAR (GREEN FESTIVALS SHOWCASE - ECOTRACK INSPIRED) -->
+      <div class="festivals-showcase-box">
+        <div class="festivals-header">
+          <div class="tag-pill" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3); margin-bottom: 0.5rem;">
+            🪔 हरित त्योहार &bull; Celebrate Every Festival, The Green Way
+          </div>
+          <h3>Eco-Friendly Festivities & Cultural Zero-Waste Swaps</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Our festivals fill streets with joy &mdash; and too often with piles of morning-after litter. Discover conscious Indian swaps for Diwali, Ganesh Utsav, Holi, Eid, Chhath, and Christmas.
+          </p>
+        </div>
+        <div id="festivals-cards-grid" class="festivals-grid">
+          <!-- Injected dynamically via JS from /api/festivals -->
+        </div>
+      </div>
+
+      <!-- Sustainable Habits Banner -->
+      <div class="eco-habits-banner">
+        <h3>🌍 5 Golden Rules of Zero-Waste Living</h3>
+        <div class="habits-grid">
+          <div class="habit-card">
+            <span class="habit-num">01</span>
+            <h4>Refuse Single-Use</h4>
+            <p>Carry a reusable canvas tote and stainless steel water bottle. Decline disposable plastic cutlery.</p>
+          </div>
+          <div class="habit-card">
+            <span class="habit-num">02</span>
+            <h4>Rinse Before Binning</h4>
+            <p>Milk pouches, tin cans, and sauce jars must be rinsed. Food contamination ruins entire recycling batches.</p>
+          </div>
+          <div class="habit-card">
+            <span class="habit-num">03</span>
+            <h4>Segregate at Source</h4>
+            <p>Maintain separate dual bins (Wet & Dry) inside kitchens. Once mixed, recovering dry recyclables is near impossible.</p>
+          </div>
+          <div class="habit-card">
+            <span class="habit-num">04</span>
+            <h4>Compost Kitchen Scraps</h4>
+            <p>Transform fruit peels and tea grounds into nutrient-rich compost for residential gardens and potted plants.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Status Update Modal (Admin) -->
+  <div id="modal-update-status" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-title">Update Complaint Status</h3>
+        <button class="btn-close" id="btn-close-modal">&times;</button>
+      </div>
+      <form id="form-update-status" class="modal-body">
+        <input type="hidden" id="modal-complaint-id">
+        
+        <div class="form-group">
+          <label for="modal-status-select">Status Transition</label>
+          <select id="modal-status-select" class="form-input select-styled" required>
+            <option value="Pending">Pending</option>
+            <option value="Assigned">Assigned</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="modal-team-input">Assign Dispatch Team / Contractor</label>
+          <input type="text" id="modal-team-input" placeholder="e.g. North Zone Truck #4 / Rapid Response" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label for="modal-notes-input">Admin Resolution Remarks</label>
+          <textarea id="modal-notes-input" rows="3" placeholder="Action taken or follow-up note..." class="form-input"></textarea>
+        </div>
+
+        <div class="form-group" id="modal-resolved-img-group">
+          <label for="modal-resolved-img-input">📸 After-Cleanup Resolution Proof Photo (URL)</label>
+          <input type="url" id="modal-resolved-img-input" placeholder="https://images.unsplash.com/... after cleanup photo proof" class="form-input">
+          <span class="field-hint">Photo proof is verified and displayed on the citizen's Before/After comparison slider.</span>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lesson Reader Modal (Swachhata Academy) -->
+  <div id="modal-lesson" class="modal-overlay" style="display: none;">
+    <div class="modal-card" style="max-width: 680px;">
+      <div class="modal-header">
+        <div>
+          <span class="badge" style="background: rgba(249, 115, 22, 0.2); color: #fb923c;" id="modal-lesson-cat">Module 01</span>
+          <h3 id="modal-lesson-title" style="margin-top: 0.25rem;">Lesson Title</h3>
+          <span id="modal-lesson-hindi" style="font-size: 0.85rem; color: #fdba74;"></span>
+        </div>
+        <button class="btn-close" id="btn-close-lesson-modal">&times;</button>
+      </div>
+      <div class="modal-body" style="padding-top: 1rem;">
+        <div id="modal-lesson-body" class="lesson-modal-content">
+          <!-- Injected via JS -->
+        </div>
+        <div class="modal-actions" style="margin-top: 1rem;">
+          <button type="button" class="btn btn-secondary" id="btn-dismiss-lesson-modal">Close Module</button>
+          <button type="button" class="btn btn-primary" onclick="closeLessonModal(); document.getElementById('quiz-container').scrollIntoView({ behavior: 'smooth' });">
+            Take Quiz Challenge &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Authentication Modal (Sign In / Register) -->
+  <div id="modal-auth" class="modal-overlay" style="display: none;">
+    <div class="modal-card auth-modal-card">
+      <div class="modal-header">
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab-btn active" id="auth-tab-login">Sign In</button>
+          <button type="button" class="auth-tab-btn" id="auth-tab-register">Create Account</button>
+        </div>
+        <button class="btn-close" id="btn-close-auth-modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Quick Demo Switcher -->
+        <div class="demo-account-box">
+          <span class="demo-box-title">⚡ Instant 1-Click Testing Credentials:</span>
+          <div class="demo-btns-row">
+            <button type="button" class="btn-demo-pill" id="btn-demo-fill-citizen">
+              👤 Citizen Demo
+            </button>
+            <button type="button" class="btn-demo-pill highlight" id="btn-demo-fill-admin">
+              🛡️ Admin Demo
+            </button>
+          </div>
+        </div>
+
+        <!-- Login Form -->
+        <form id="form-login" class="auth-form">
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" required placeholder="name@domain.com" class="form-input" autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" required placeholder="••••••••" class="form-input" autocomplete="current-password">
+          </div>
+          <button type="submit" class="btn btn-primary full-width" id="btn-login-submit">
+            Log In to Portal
+          </button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="form-register" class="auth-form" style="display: none;">
+          <div class="form-group">
+            <label for="reg-name">Full Name *</label>
+            <input type="text" id="reg-name" required placeholder="Jane Doe" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email Address *</label>
+            <input type="email" id="reg-email" required placeholder="jane@example.com" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password *</label>
+            <input type="password" id="reg-password" required placeholder="At least 6 characters" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="reg-role">Account Role *</label>
+            <select id="reg-role" class="form-input select-styled">
+              <option value="Citizen">Citizen (Report & Track Issues)</option>
+              <option value="Administrator">Administrator (Manage & Dispatch)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="reg-phone">Phone Number</label>
+            <input type="tel" id="reg-phone" placeholder="+1-555-0100" class="form-input">
+          </div>
+          <div class="form-group">
+            <label for="reg-address">Residential / Office Address</label>
+            <input type="text" id="reg-address" placeholder="Society, Block, Street" class="form-input">
+          </div>
+          <button type="submit" class="btn btn-primary full-width">
+            Register & Continue
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- EcoAI Floating Assistant Widget -->
+  <div class="ai-assistant-container">
+    <!-- Floating Action Button -->
+    <button id="btn-open-ai-chat" class="ai-fab" aria-label="Open EcoAI Assistant">
+      <div class="ai-fab-glow"></div>
+      <div class="ai-fab-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
+          <path d="M4.93 4.93a2 2 0 0 1 2.83 0l1.41 1.41a2 2 0 0 1-2.83 2.83L4.93 7.76a2 2 0 0 1 0-2.83z"/>
+          <path d="M2 12a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2 2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"/>
+          <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/>
+          <path d="m14 10-4 4"/>
+          <path d="m10 10 4 4"/>
+        </svg>
+      </div>
+      <span class="ai-fab-badge">AI</span>
+    </button>
+
+    <!-- Chat Drawer -->
+    <div id="ai-chat-drawer" class="ai-chat-drawer" style="display: none;">
+      <div class="ai-chat-header">
+        <div class="ai-header-info">
+          <div class="ai-avatar-box" style="background: linear-gradient(135deg, #f97316, #10b981);">🪷</div>
+          <div>
+            <h4>AI Swachhata Guru</h4>
+            <span class="ai-status-indicator" style="color: #6ee7b7;">● Active Indian Civic & Waste Tutor</span>
+          </div>
+        </div>
+        <div class="ai-header-controls">
+          <button type="button" class="btn-icon-sm" id="btn-clear-ai-chat" title="Clear chat history">🗑️</button>
+          <button type="button" class="btn-icon-sm" id="btn-close-ai-chat" title="Minimize">&times;</button>
+        </div>
+      </div>
+
+      <!-- Quick Prompt Suggestion Chips -->
+      <div class="ai-chips-container" id="ai-quick-chips">
+        <button type="button" class="ai-chip" data-prompt="What to do with temple puja flowers (Nirmalya)?">🌸 Puja Flowers / Nirmalya</button>
+        <button type="button" class="ai-chip" data-prompt="Where to throw milk packets (Amul/Mother Dairy)?">🥛 Milk Pouch Rule</button>
+        <button type="button" class="ai-chip" data-prompt="How to dispose of coconut shells?">🥥 Coconut Shells</button>
+        <button type="button" class="ai-chip" data-prompt="What is the Sanitary Red Dot rule for Safai Mitras?">🩸 Red Dot Rule</button>
+        <button type="button" class="ai-chip" data-prompt="How to start home Khamba composting?">🪴 Khamba Composting</button>
+      </div>
+
+      <!-- Chat History -->
+      <div class="ai-chat-messages" id="ai-messages-list">
+        <div class="ai-msg bot">
+          <div class="ai-bubble">
+            नमस्ते! I am <strong>AI Swachhata Guru (स्वच्छता गुरु)</strong>, your 24/7 intelligent guide for Swachh Bharat Abhiyan and sustainable Indian waste management. Ask me where to throw any cultural or household item, or get help earning your <strong>Swachh Nagrik Certificate</strong>!
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Bar -->
+      <form id="ai-chat-form" class="ai-chat-input-bar">
+        <input type="text" id="ai-user-input" placeholder="Ask EcoAI anything (e.g. 'Can I recycle paint cans?')..." autocomplete="off">
+        <button type="submit" class="btn-ai-send" id="btn-ai-send" title="Send message">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <strong>EcoPulse System v1.0.0 (MVP)</strong> &mdash; Modern Waste Management & Civic Intelligence Architecture.
+      </div>
+      <div class="footer-right">
+        <span>Clean Cities Initiative &bull; Sustainable Development Goal 11 & 12</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
